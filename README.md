@@ -41,8 +41,8 @@ Access key and secret key should be created in the Prisma Cloud Enterprise Editi
 ```bash
 git clone https://github.com/Kyle9021/prisma_resource_type_simple_inventory
 cd prisma_resource_type_simple_inventory/
-export ACCESSKEY="<ACCESS_KEY_FROM_CONSOLE_HERE>"
-export SECRETKEY="<SECRET_KEY_FROM_CONSOLE_HERE>"
-export APIURL="<PRISMA_API_URL_HERE"
+export PRISMA_ACCESSKEY="<ACCESS_KEY_FROM_CONSOLE_HERE>"
+export PRISMA_SECRETKEY="<SECRET_KEY_FROM_CONSOLE_HERE>"
+export PRISMA_APIURL="<PRISMA_API_URL_HERE"
 bash ./resource_type_inventory_script.sh
 ```
