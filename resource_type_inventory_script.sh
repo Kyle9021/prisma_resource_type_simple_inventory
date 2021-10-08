@@ -27,7 +27,7 @@
 # Adjust as necessary default is 3 months
 
 TIMEUNIT=month #could be day, year, month
-TIMEAMOUNT=12 #integer value
+TIMEAMOUNT=3 #integer value
 
 # No edits needed below this line
 
