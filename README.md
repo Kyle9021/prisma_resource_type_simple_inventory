@@ -39,6 +39,8 @@ Access key and secret key should be created in the Prisma Cloud Enterprise Editi
 * install requirements jq and git
 * export the environment variables in terminal with the below commands
 
+NOTE: You may need to adjust the time variables (`TIMEUNIT`, `TIMEAMOUNT`) in the script `nano ./resource_type_script.sh` depending on when the customer onboarded the cloud accounts. By default it is set to pull the last 3 months of data. 
+
 ### COMMANDS:
 
 ```bash
