@@ -16,7 +16,10 @@ jq needs to be installed:
 * rhel/fedora: `sudo yum install jq`
 * macos: `sudo brew install jq`
 
-Recommendations for hardening are: store variables in a secret manager of choice or export the access_keys/secret_key as env variables in a separate script. 
+Recommendations for hardening are: 
+
+* Store variables in a secret manager of choice or 
+* Export the access_keys/secret_key as env variables in a separate script. 
 
 Decision here is to use environment variables to simplify the workflow and mitigate risk of including credentials in the script.
 
