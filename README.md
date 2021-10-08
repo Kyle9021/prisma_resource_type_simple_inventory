@@ -4,7 +4,7 @@
 
 git needs to be installed
 
-* debian/ubuntu: `sudo apt install git`
+* debian/ubuntu: `sudo apt-get install git`
 * rhel/fedora: `sudo yum install git`
 * macos: `sudo brew install git`
 
