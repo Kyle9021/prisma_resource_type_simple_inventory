@@ -65,7 +65,7 @@ printf %s "${RESPONSEJSON}" | jq -r '.aws' | jq -r 'map({resourceTypeName, highS
 echo -e "\nazure \n" >> pcee_asset_inventory_with_alerts_${REPORTDATE}.csv 2>/dev/null                                                            
 printf %s "${RESPONSEJSON}" | jq -r '.azure' | jq -r 'map({resourceTypeName, highSeverityIssues, mediumSeverityIssues, lowSeverityIssues, passedResources, failedResources, totalResources}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' >> pcee_asset_inventory_with_alerts_${REPORTDATE}.csv 2>/dev/null
 
-echo -e "\naws\n" >> pcee_asset_inventory_with_alerts_${REPORTDATE}.csv 2>/dev/null                                                            
+echo -e "\ngcp\n" >> pcee_asset_inventory_with_alerts_${REPORTDATE}.csv 2>/dev/null                                                            
 printf %s "${RESPONSEJSON}" | jq -r '.gcp' | jq -r 'map({resourceTypeName, highSeverityIssues, mediumSeverityIssues, lowSeverityIssues, passedResources, failedResources, totalResources}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' >> pcee_asset_inventory_with_alerts_${REPORTDATE}.csv 2>/dev/null
 
 echo "All done! Your report is saved as $PWD/pcee_asset_inventory_with_alerts_${REPORTDATE}.csv"
