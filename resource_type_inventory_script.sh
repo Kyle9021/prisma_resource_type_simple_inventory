@@ -24,6 +24,11 @@
 #   export PRISMA_APIURL="<PRISMA_API_URL_HERE"
 #   bash ./resource_type_inventory_script.sh
 
+# Adjust as necessary default is 3 months
+
+TIMEUNIT=month #could be day, year, month
+TIMEAMOUNT=12 #integer value
+
 # No edits needed below this line
 
 ##########################
@@ -55,7 +60,7 @@ REPORTDATE=$(date  +%m_%d_%y)
 
 # URL FILTERS pull the last years worth of data
 RESPONSEDATA=$(curl --request GET \
-                    --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=12&timeUnit=month&groupBy=resource.type&scan.status=all" \
+                    --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=${TIMEAMOUNT}&timeUnit=${TIMEUNIT}&groupBy=resource.type&scan.status=all" \
                     --header "x-redlock-auth: ${AUTHTOKEN}")
 
 # restructures data for mapping to csv
