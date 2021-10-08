@@ -47,26 +47,30 @@ REQUESTBODY="${REQUESTBODYSINGLE//\'/\"}"
 
 
 AUTHTOKEN=$(curl -s --request POST \
-                       --url "${APIURL}/login" \
-                       --header 'Accept: application/json; charset=UTF-8' \
-                       --header 'Content-Type: application/json; charset=UTF-8' \
-                       --data "${REQUESTBODY}" | jq -r '.token')
+                    --url "${APIURL}/login" \
+                    --header 'Accept: application/json; charset=UTF-8' \
+                    --header 'Content-Type: application/json; charset=UTF-8' \
+                    --data "${REQUESTBODY}" | jq -r '.token')
 
 REPORTDATE=$(date  +%m_%d_%y)
 RESPONSEDATA=$(curl --request GET \
-     --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=12&timeUnit=month&groupBy=resource.type&scan.status=all" \
-     --header "x-redlock-auth: ${AUTHTOKEN}")
-     
+                    --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=12&timeUnit=month&groupBy=resource.type&scan.status=all" \
+                    --header "x-redlock-auth: ${AUTHTOKEN}")
+
+# restructures data for mapping to csv
 RESPONSEJSON=$(printf %s ${RESPONSEDATA} | jq '[.groupedAggregates[]]' | jq 'group_by(.cloudTypeName)[] | {(.[0].cloudTypeName): [.[] | {resourceTypeName: .resourceTypeName, totalResources: .totalResources}]}' )
-                                                             
+
+# adds aws asset table
 echo -e "aws" >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null                                                            
 printf %s "${RESPONSEJSON}" | jq -r '.aws' | jq -r 'map({resourceTypeName,totalResources}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null
 
+# adds azure asset table
 echo -e "\nazure \n" >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null                                                            
 printf %s "${RESPONSEJSON}" | jq -r '.azure' | jq -r 'map({resourceTypeName,totalResources}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null
 
-echo -e "\naws\n" >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null                                                            
+# adds gcp asset table
+echo -e "\ngcp\n" >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null                                                            
 printf %s "${RESPONSEJSON}" | jq -r '.gcp' | jq -r 'map({resourceTypeName,totalResources}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null
 
-echo "All done your report is saved as $PWD/pcee_asset_inventory_${REPORTDATE}.csv"
+echo "All done! Your report is saved as $PWD/pcee_asset_inventory_${REPORTDATE}.csv"
 exit
