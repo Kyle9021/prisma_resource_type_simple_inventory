@@ -1,6 +1,6 @@
-# prisma_resource_type_simple_inventory
+# Prisma Cloud Simple Resource Type Script
 
-# REQUIREMENTS:
+## REQUIREMENTS:
 
 jq needs to be installed: 
 
@@ -14,12 +14,12 @@ Decision here is to use environment variables to simplify the workflow and mitig
 
 Access key and secret key should be created in the Prisma Cloud Enterprise Edition Console under: Settings > Accesskeys
 
-# INSTRUCTIONS:
+## INSTRUCTIONS:
 
 * install requirement jq
 * export the environment variables in shell with the below commands
 
-COMMANDS:
+### COMMANDS:
 
 ```bash
 export ACCESSKEY="<ACCESS_KEY_FROM_CONSOLE_HERE>"
