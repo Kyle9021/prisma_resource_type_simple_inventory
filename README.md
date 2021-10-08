@@ -1,5 +1,7 @@
 # Prisma Cloud Simple Resource Type Inventory Script
 
+[![CodeFactor](https://www.codefactor.io/repository/github/kyle9021/prisma_resource_type_simple_inventory/badge/main)](https://www.codefactor.io/repository/github/kyle9021/prisma_resource_type_simple_inventory/overview/main)
+
 ## REQUIREMENTS:
 
 git needs to be installed
