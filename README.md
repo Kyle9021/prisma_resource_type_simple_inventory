@@ -1,0 +1,1 @@
+# prisma_resource_type_simple_inventory
