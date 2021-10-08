@@ -58,7 +58,7 @@ AUTHTOKEN=$(curl -s --request POST \
 
 REPORTDATE=$(date  +%m_%d_%y)
 RESPONSEDATA=$(curl --request GET \
-     --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=12&timeUnit=month&groupBy=resource.type&scan.status=all" \
+     --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=${TIMEAMOUNT}&timeUnit=${TIMEUNIT}&groupBy=resource.type&scan.status=all" \
      --header "x-redlock-auth: ${AUTHTOKEN}")
      
 RESPONSEJSON=$(printf %s ${RESPONSEDATA} | jq '[.groupedAggregates[]]' | jq 'group_by(.cloudTypeName)[]| {(.[0].cloudTypeName): [.[] | {resourceTypeName: .resourceTypeName, highSeverityIssues: .highSeverityFailedResources, mediumSeverityIssues: .mediumSeverityFailedResources, lowSeverityIssues: .lowSeverityFailedResources, passedResources: .passedResources, failedResources: .failedResources, totalResources: .totalResources}]}')
