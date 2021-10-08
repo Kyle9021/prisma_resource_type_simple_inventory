@@ -52,6 +52,8 @@ AUTHTOKEN=$(curl -s --request POST \
                     --data "${REQUESTBODY}" | jq -r '.token')
 
 REPORTDATE=$(date  +%m_%d_%y)
+
+# URL FILTERS pull the last years worth of data
 RESPONSEDATA=$(curl --request GET \
                     --url "${APIURL}/v2/inventory?timeType=relative&timeAmount=12&timeUnit=month&groupBy=resource.type&scan.status=all" \
                     --header "x-redlock-auth: ${AUTHTOKEN}")
