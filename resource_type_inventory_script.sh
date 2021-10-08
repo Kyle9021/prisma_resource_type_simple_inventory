@@ -19,9 +19,9 @@
 # install requirement jq
 # export the environment variables in shell with the below commands sans the '#'
 # COMMANDS:
-#   export ACCESSKEY="<ACCESS_KEY_FROM_CONSOLE_HERE>"
-#   export SECRETKEY="<SECRET_KEY_FROM_CONSOLE_HERE>"
-#   export APIURL="<PRISMA_API_URL_HERE"
+#   export PRISMA_ACCESSKEY="<ACCESS_KEY_FROM_CONSOLE_HERE>"
+#   export PRISMA_SECRETKEY="<SECRET_KEY_FROM_CONSOLE_HERE>"
+#   export PRISMA_APIURL="<PRISMA_API_URL_HERE"
 #   bash ./resource_type_inventory_script.sh
 
 # No edits needed below this line
