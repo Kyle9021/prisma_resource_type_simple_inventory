@@ -24,6 +24,10 @@
 #   export PRISMA_APIURL="<PRISMA_API_URL_HERE"
 #   bash ./resource_type_inventory_and_alerts.sh
 
+# adjust as needed default is to look back 3 months
+TIMEUNIT=month # could be day, month, year
+TIMEAMOUNT=3 # integer value
+
 # No edits needed below this line
 
 ##########################
