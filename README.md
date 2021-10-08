@@ -1,4 +1,4 @@
-# Prisma Cloud Simple Resource Type Script
+# Prisma Cloud Simple Resource Type Inventory Script
 
 ## REQUIREMENTS:
 
