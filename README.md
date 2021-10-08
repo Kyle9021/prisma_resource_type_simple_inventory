@@ -34,7 +34,7 @@ Access key and secret key should be created in the Prisma Cloud Enterprise Editi
 ## INSTRUCTIONS:
 
 * install requirements jq and git
-* export the environment variables in shell with the below commands
+* export the environment variables in terminal with the below commands
 
 ### COMMANDS:
 
