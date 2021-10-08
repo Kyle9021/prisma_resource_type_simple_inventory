@@ -68,4 +68,5 @@ printf %s "${RESPONSEJSON}" | jq -r '.azure' | jq -r 'map({resourceTypeName,tota
 echo -e "\naws\n" >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null                                                            
 printf %s "${RESPONSEJSON}" | jq -r '.gcp' | jq -r 'map({resourceTypeName,totalResources}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' >> pcee_asset_inventory_${REPORTDATE}.csv 2>/dev/null
 
+echo "All done your report is saved as $PWD/pcee_asset_inventory_${REPORTDATE}.csv"
 exit
