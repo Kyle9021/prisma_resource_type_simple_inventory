@@ -20,6 +20,15 @@ Recommendations for hardening are: store variables in a secret manager of choice
 
 Decision here is to use environment variables to simplify the workflow and mitigate risk of including credentials in the script.
 
+_note: if bash_history is turned on the keys will be in the bash_history_ 
+
+To clear .bash_history and create a new .bash_history file:
+
+```bash
+rm $HOME/.bash_history
+touch $HOME/.bash_history
+```
+
 Access key and secret key should be created in the Prisma Cloud Enterprise Edition Console under: Settings > Accesskeys
 
 ## INSTRUCTIONS:
